@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product CSV Comparator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- SheetJS is used only in the browser to create XLSX files -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="badge">100% BROWSER PROCESSING</span>
+      <h1>Product CSV Comparator</h1>
+      <p>
+        Compare Yesterday vs Today product CSV files.
+        CSV data is processed locally in your browser and is not uploaded to the website.
+      </p>
+    </header>
+
+    <section class="upload-card">
+      <div class="file-group">
+        <label for="yesterdayFile">Yesterday CSV</label>
+        <input id="yesterdayFile" type="file" accept=".csv,text/csv">
+        <span id="yesterdayName">No file selected</span>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="file-group">
+        <label for="todayFile">Today CSV</label>
+        <input id="todayFile" type="file" accept=".csv,text/csv">
+        <span id="todayName">No file selected</span>
+      </div>
+
+      <button id="compareBtn" class="primary" disabled>
+        Compare Files
+      </button>
+    </section>
+
+    <div id="status" class="status hidden"></div>
+
+    <section id="results" class="hidden">
+      <div class="actions">
+        <button id="downloadExcel" class="secondary">Download Excel</button>
+        <button id="downloadTxt" class="secondary">Download TXT</button>
+      </div>
+
+      <div id="summaryCards" class="summary-grid"></div>
+
+      <section class="panel">
+        <h2>Column-Level Changes</h2>
+        <div class="table-container">
+          <table id="columnTable"></table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>New SKUs</h2>
+        <div id="newSkus" class="sku-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Removed SKUs</h2>
+        <div id="removedSkus" class="sku-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Detailed TXT Report</h2>
+        <pre id="txtReport"></pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
